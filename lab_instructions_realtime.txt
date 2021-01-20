@@ -1,0 +1,41 @@
+Link to the dataset - https://www.kaggle.com/carrie1/ecommerce-data
+lambda - WriteKinesis >> Python 3.8
+api gateway - Orders
+kinesis - APIData
+s3 - raworders-ekas
+lambda - Write-Kinesis-To-s3
+dynamodb - Customers >> CustomerID
+           Invoices >> InvoiceNo
+lambda - Write-To-DynamoDB
+lambda - 
+
+1. Create a lambda function to write to kinesis.
+2. Create a rest api gateway and point to lambda function above.
+--create resources
+--create method
+3. Once created, configure the connection to the lambda function. While being on the Get method, select Lambda function and point to your function. 
+Once configured, in order lambda to receive the values, change the mapping template. Click Integration request and then, Mapping Templates and change the template to 'Method Request passthrough'.
+4. Deploy your API to generate the API url.
+5. Create Kinesis data stream.
+6. Make sure that lambda can write to kinesis and add policies:
+--kinesisfullaccess - standard
+--mygetdynamodb - attach policy
+--mykinesisread - attach policy --put records and put record
+--mykinesiswriteapidata - attach policy
+--awslambdabasicexecutionrole - attach policy
+7. To lambda, add the code from the folder in this Git repository.
+8. Initiate the code from the folder in this Git repository to send records to API.
+9. Create a S3 bucket to stream data from Kinesis.
+10. Create an IAM role for the newly lambda function.
+--s3fullaccess
+--mykinesisread
+--awslambdabasicexecutionrole
+11. Create a lambda function >> blueprint - kinesis-process-record-python to write to s3 and add the lambda code from the folder in this Git repository.
+12. Create dynamodb tables.
+13. Create an IAM role for the lambda function.
+--awslambdabasicexecutionrole
+--mykinesis2
+--mydynamodbwrite
+14. Create a lambda function to write to dynamodb.
+15. Test with the get API gateway or Postman.
+16. 
