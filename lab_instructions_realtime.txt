@@ -7,7 +7,9 @@ lambda - Write-Kinesis-To-s3
 dynamodb - Customers >> CustomerID
            Invoices >> InvoiceNo
 lambda - Write-To-DynamoDB
-lambda - 
+redshift - orders
+s3 - firehouseredshift-eka
+firehouse - RedshiftDelivery
 
 1. Create a lambda function to write to kinesis.
 2. Create a rest api gateway and point to lambda function above.
@@ -38,4 +40,10 @@ Once configured, in order lambda to receive the values, change the mapping templ
 --mydynamodbwrite
 14. Create a lambda function to write to dynamodb.
 15. Test with the get API gateway or Postman.
-16. 
+16. Create an elastic IP to allow instances and devices outside of VPC connect to the database.
+16. Configure redshift cluster and change the settings to publicy accessible.
+17. Setup VPC routing for firehouse i.e. make sure that firehouse is in inbound rules - {FirehouseIP}/27. You can find firehouse IP at https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-rs-vpc, e.g. 52.70.63.192/27 for N.Virginia.
+18. Create tables in redshift in Editor using the code in the folder in this repository.
+19. Create a s3 bucket and upload jsonpath file in the folder in this repository.
+20. Configure firehouse - add 'json 's3://firehouseredshift-eka/jsonpaths.json';' to COPY options - optional
+21. Open port 5432 as an inbound rule in Redshift and setup Power BI to query data.

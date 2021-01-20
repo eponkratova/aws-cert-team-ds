@@ -1,1 +1,12 @@
 Link to the dataset - https://www.kaggle.com/carrie1/ecommerce-data
+redshift - bulkimport
+glue - orders
+
+1. Create a new table in Redshift.
+2. Create a database in Glue.
+3. Create an IAM role:
+--s3full
+--glueservicerole
+--redshiftfullaccess
+--awsglueservicerole-bulkimport
+3. Add a crawler for s3 and a crawler for Redshift (path is dev/public/bulkimport).
