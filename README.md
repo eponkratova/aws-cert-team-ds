@@ -9,7 +9,3 @@ High-level view:
 Real-time processing:
 
 ![option 1](https://github.com/eponkratova/aws-cert-team-ds/blob/master/pics/architecture_real.png)
-
-Batch-time processing:
-
-![option 1](https://github.com/eponkratova/aws-cert-team-ds/blob/master/pics/architecture_batch.png)
